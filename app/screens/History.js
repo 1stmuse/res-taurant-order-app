@@ -1,20 +1,36 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, ScrollView } from 'react-native'
+
+import OrderDetail from '../components/OrderDetail'
+import Screen from '../components/Screen'
 
 const History =() =>{
 
   return (
-    <View style={styles.container} >
-         <Text>History screen</Text>
-    </View>
+      <Screen>
+         <ScrollView style={styles.orders} contentContainerStyle={{paddingHorizontal:20}} >
+            <OrderDetail/>
+            <OrderDetail/>
+            <OrderDetail/>
+            <OrderDetail/>
+            <OrderDetail/>
+            <OrderDetail/>
+            <OrderDetail/>
+            <OrderDetail/>
+            <OrderDetail/>
+            <OrderDetail/>
+            <OrderDetail/>
+         </ScrollView>
+      </Screen>
    )
 
 }
 
 
 const styles = StyleSheet.create({
-   container:{
-      
+   orders:{
+      backgroundColor:'white',
+      marginTop:10
    }
 })
 export default History

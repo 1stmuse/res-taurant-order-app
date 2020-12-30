@@ -1,9 +1,10 @@
 import 'react-native-gesture-handler'
 
 import React from 'react';
-import { SafeAreaView, StyleSheet, View,Text, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
+import Screen from './app/components/Screen'
 import RootStack from './app/rootStacks/index'
 
 const Main = () =>{
@@ -17,18 +18,14 @@ const Main = () =>{
 const App =() => {
   return (
     <>
-      {/* <StatusBar barStyle="dark-content" backgroundColor='red' /> */}
-      <SafeAreaView style={styles.scrollView} >
+      <StatusBar barStyle='light-content' translucent backgroundColor='tomato' />
+      {/* <Screen > */}
           <Main/>
-      </SafeAreaView>
+      {/* </Screen> */}
     </>
   );
 };
 
-const styles = StyleSheet.create({
-  scrollView: {
-    flex:1
-  },
-});
+
 
 export default App;

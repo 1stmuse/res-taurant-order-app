@@ -1,7 +1,7 @@
 import React from 'react'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'
 
 const CustomBotton =({onPress}) =>{
 
@@ -9,6 +9,7 @@ const CustomBotton =({onPress}) =>{
       <TouchableOpacity onPress={onPress} >
         <View style={styles.container} >
             <MaterialCommunityIcons name="plus-circle" color="white" size={40} />
+            {/* <Text style={{color:'white', fontWeight:'bold'}} >Order</Text> */}
         </View>
       </TouchableOpacity>
    )

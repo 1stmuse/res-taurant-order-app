@@ -1,12 +1,24 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, FlatList } from 'react-native'
+
+import {menus} from '../data'
+import Screen from '../components/Screen'
+import RandomFoodCard from '../components/RandomFoodCard'
 
 const HomeScreen =() =>{
 
   return (
-    <View style={styles.main} >
-         <Text style={[{fontSize:20}]} >home tab</Text>
-    </View>
+    <Screen>
+       <View style= {styles.main} >
+         <FlatList
+            data={menus}
+            renderItem={({item})=> <RandomFoodCard food={item} />}
+            keyExtractor={({name})=> name}
+            bounces={true}
+            showsVerticalScrollIndicator={false}
+         />
+      </View>
+    </Screen>
    )
 
 }
@@ -15,8 +27,8 @@ const HomeScreen =() =>{
 const styles = StyleSheet.create({
    main:{
       flex:1,
-      justifyContent:'center',
-      alignItems:'center'
+      paddingHorizontal:20,
+      backgroundColor:'white'
    }
 })
 export default HomeScreen
