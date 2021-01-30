@@ -18,6 +18,7 @@ const RandomFoodCard = ({food}) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
+      activeOpacity={0.9}
       style={styles.container}
       onPress={() => navigation.navigate('foodDetail', {id: food.id})}>
       <View style={{width: '100%', height: 200, overflow: 'hidden'}}>
