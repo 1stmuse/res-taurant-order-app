@@ -23,9 +23,7 @@ const App = () => {
         translucent
         backgroundColor="tomato"
       />
-      <Screen>
         <Main />
-      </Screen>
     </>
   );
 };

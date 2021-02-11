@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {
   View,
@@ -6,7 +7,6 @@ import {
   TouchableWithoutFeedback,
   Modal,
   FlatList,
-  Button,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import PickerItem from './PickerItem';
@@ -39,13 +39,16 @@ const AppPicker = ({
         </View>
       </TouchableWithoutFeedback>
       <Modal visible={visible} animationType="slide">
-        <Button title="close" onPress={() => setVisible(false)} />
+        <TouchableWithoutFeedback onPress={() => setVisible(false)}>
+          <View style={styles.closeBtn}>
+            <Text style={{color: 'blue', fontSize: 22}}>Close</Text>
+          </View>
+        </TouchableWithoutFeedback>
         <FlatList
           data={menus}
+          numColumns={3}
           keyExtractor={(item) => item.id}
-          renderItem={({item}) => (
-            <PickerItem menu={item.menu} onPress={() => onSelect(item.menu)} />
-          )}
+          renderItem={({item}) => <PickerItem menu={item} onPress={onSelect} />}
         />
       </Modal>
     </>
@@ -54,19 +57,22 @@ const AppPicker = ({
 
 const styles = StyleSheet.create({
   container: {
-    // borderRadius: 25,
-    backgroundColor: '#ddd',
     flexDirection: 'row',
     width: '100%',
     padding: 15,
   },
   cat: {
-    // width: '100%',
     borderRadius: 15,
     backgroundColor: 'tomato',
     padding: 15,
     marginVertical: 15,
     marginHorizontal: 15,
+  },
+  closeBtn: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
   },
   icon: {
     marginRight: 15,
