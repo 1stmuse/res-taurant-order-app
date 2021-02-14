@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useState, createRef} from 'react';
-import ActionSheet from "react-native-actions-sheet";
+import ActionSheet from 'react-native-actions-sheet';
 import {
   View,
   StyleSheet,
@@ -13,7 +13,7 @@ import {
 import Screen from '../components/Screen';
 import {menus} from '../data';
 
-const actionsSheet = createRef()
+const actionsSheet = createRef();
 
 const FoodDetails = ({route, navigation}) => {
   const {id} = route.params;
@@ -155,10 +155,10 @@ const FoodDetails = ({route, navigation}) => {
           </Text>
         </TouchableOpacity>
       </View>
-      <ActionSheet ref={actionsSheet} >
-          <View>
-            <Text>action works</Text>
-          </View>
+      <ActionSheet ref={actionsSheet}>
+        <View>
+          <Text>action works</Text>
+        </View>
       </ActionSheet>
     </Screen>
   );
