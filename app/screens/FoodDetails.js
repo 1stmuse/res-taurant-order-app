@@ -1,5 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, createRef} from 'react';
+import ActionSheet from "react-native-actions-sheet";
 import {
   View,
   StyleSheet,
@@ -12,7 +13,9 @@ import {
 import Screen from '../components/Screen';
 import {menus} from '../data';
 
-const FoodDetails = ({route}) => {
+const actionsSheet = createRef()
+
+const FoodDetails = ({route, navigation}) => {
   const {id} = route.params;
   const [food, setFood] = useState({});
 
@@ -143,12 +146,20 @@ const FoodDetails = ({route}) => {
         </ScrollView>
       </View>
       <View style={styles.orderButtonContainer}>
-        <TouchableOpacity activeOpacity={0.7} style={styles.orderButton}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.orderButton}
+          onPress={() => navigation.navigate('placeOrder')}>
           <Text style={[{color: 'white', fontWeight: 'bold', fontSize: 20}]}>
             Place order
           </Text>
         </TouchableOpacity>
       </View>
+      <ActionSheet ref={actionsSheet} >
+          <View>
+            <Text>action works</Text>
+          </View>
+      </ActionSheet>
     </Screen>
   );
 };
