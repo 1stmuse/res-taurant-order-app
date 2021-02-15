@@ -11,9 +11,11 @@ import {
 } from 'react-native';
 
 import Screen from '../components/Screen';
+import PlaceOrder from '../components/PlaceOrder';
 import {menus} from '../data';
 
-const actionsSheet = createRef();
+const actionsSheetRef = createRef();
+const scrollViewRef = createRef();
 
 const FoodDetails = ({route, navigation}) => {
   const {id} = route.params;
@@ -149,15 +151,33 @@ const FoodDetails = ({route, navigation}) => {
         <TouchableOpacity
           activeOpacity={0.7}
           style={styles.orderButton}
-          onPress={() => navigation.navigate('placeOrder')}>
+          onPress={() => actionsSheetRef.current?.setModalVisible()}>
           <Text style={[{color: 'white', fontWeight: 'bold', fontSize: 20}]}>
             Place order
           </Text>
         </TouchableOpacity>
       </View>
-      <ActionSheet ref={actionsSheet}>
+      <ActionSheet
+        ref={actionsSheetRef}
+        headerAlwaysVisible={true}
+        bounceOnOpen={true}
+        indicatorColor="tomato"
+        gestureEnabled={true}>
         <View>
-          <Text>action works</Text>
+          <ScrollView
+            ref={scrollViewRef}
+            nestedScrollEnabled={true}
+            onScrollEndDrag={() =>
+              actionsSheetRef.current?.handleChildScrollEnd()
+            }
+            onScrollAnimationEnd={() =>
+              actionsSheetRef.current?.handleChildScrollEnd()
+            }
+            onMomentumScrollEnd={() =>
+              actionsSheetRef.current?.handleChildScrollEnd()
+            }>
+            <PlaceOrder />
+          </ScrollView>
         </View>
       </ActionSheet>
     </Screen>
